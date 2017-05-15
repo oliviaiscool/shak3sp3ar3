@@ -1,11 +1,5 @@
 # shak3sp3ar3
-trained on shakespearean sonnets, fill in the blanks of pop song lyrics
-
-Olivia Ross, Ciara Cagney & Aidan Oakley
-Design Project Proposal
-CSC590 Selected Topics
-
-Machine Learning for Performers, Artists, and Poets
+(trained on shakespearean sonnets, fill in the blanks of pop song lyrics)
 
 ## PROJECT GOALS
 Trained on Shakespeare, we’ll test how well a neural net can fill in the blanks to create coherent pop song lyrics. 
