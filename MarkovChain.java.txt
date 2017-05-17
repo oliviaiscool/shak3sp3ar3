@@ -1,0 +1,62 @@
+//this is my (probably terrible) attempt at just turning a string into arraylist indexes and then going through that arraylist and making a array of probabilities for each word
+
+import java.util.ArrayList; 
+public class MarkovChain 
+{
+	static ArrayList<String> words;  
+	static String string = "Hi there my name is aidan oakley and i like to party and i really like to i dont know party a lot and stuff so just sit tight and let the good times roll okay? yeahhhhhhhhh";
+	static int wordcount = 0;
+	public int[] probability = new int[wordcount];
+	public static ArrayList<String> createList()
+	{
+		
+		String temp = "";
+		int stringcount = string.length();
+		int i = 0;
+		while(i < stringcount)
+		{
+			i++;
+			while(string.charAt(i) != ' ' || string.charAt(i) != ',' || string.charAt(i) != '!' || string.charAt(i) != '?')
+			{
+				temp = temp + string.charAt(i);
+				
+			}
+			if(string.charAt(i) == ' ' || string.charAt(i) == ',' || string.charAt(i) == '!' || string.charAt(i) == '?')
+			{
+				words.add(temp);
+				wordcount++;
+			}
+		}
+		return words; 
+	}
+	
+	public int[] goThroughList(ArrayList<String> words)
+	{
+		
+		for(int i = 0; i<wordcount; i++)
+		{
+			String tempafter = words.get(i+1) + words.get(i+2);
+			while(i > 4)
+			{
+				if(tempafter.equals(words.get(i+3) + words.get(i+4)))
+				{
+					probability[i] = probability[i] + 1; 
+				}
+			}
+			
+		}
+		return probability; 
+	}
+	public String toString()
+	{
+		
+		return(words.get(2)); 
+		
+	}
+	public static void main(String[] args)
+	{
+		createList(); 
+	}
+	
+}
+
