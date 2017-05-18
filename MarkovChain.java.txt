@@ -1,62 +1,45 @@
+package markovChain;
+
 //this is my (probably terrible) attempt at just turning a string into arraylist indexes and then going through that arraylist and making a array of probabilities for each word
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
+
+
 public class MarkovChain 
 {
-	static ArrayList<String> words;  
-	static String string = "Hi there my name is aidan oakley and i like to party and i really like to i dont know party a lot and stuff so just sit tight and let the good times roll okay? yeahhhhhhhhh";
+	static ArrayList<String> words = new ArrayList<String>(); 
+	static String string = "Hi there my name is aidan oakley and i really like to party and stuff";
 	static int wordcount = 0;
-	public int[] probability = new int[wordcount];
+	public static int[] probability = new int[wordcount];
 	public static ArrayList<String> createList()
 	{
-		
-		String temp = "";
-		int stringcount = string.length();
-		int i = 0;
-		while(i < stringcount)
+		String[] list = string.split("[\\W]+");
+		for (String s: list)
 		{
-			i++;
-			while(string.charAt(i) != ' ' || string.charAt(i) != ',' || string.charAt(i) != '!' || string.charAt(i) != '?')
+			words.add(s);
+			wordcount++;
+		}
+		System.out.println(wordcount);
+		return words; 
+		
+	}
+
+	public static int[] makeProbability(ArrayList<String> words)
+	{
+			int[] probabilities; 
+			for(String s: words)
 			{
-				temp = temp + string.charAt(i);
+				String temp = s; 
+				//go through the list. yeah find all instances of the word. 
+				//look at the two words after that word in each case. 
+				//If any of those two words show up more than once, make that probability greater
 				
 			}
-			if(string.charAt(i) == ' ' || string.charAt(i) == ',' || string.charAt(i) == '!' || string.charAt(i) == '?')
-			{
-				words.add(temp);
-				wordcount++;
-			}
-		}
-		return words; 
-	}
-	
-	public int[] goThroughList(ArrayList<String> words)
-	{
-		
-		for(int i = 0; i<wordcount; i++)
-		{
-			String tempafter = words.get(i+1) + words.get(i+2);
-			while(i > 4)
-			{
-				if(tempafter.equals(words.get(i+3) + words.get(i+4)))
-				{
-					probability[i] = probability[i] + 1; 
-				}
-			}
-			
-		}
-		return probability; 
-	}
-	public String toString()
-	{
-		
-		return(words.get(2)); 
-		
 	}
 	public static void main(String[] args)
 	{
 		createList(); 
+		
 	}
-	
-}
 
+}
