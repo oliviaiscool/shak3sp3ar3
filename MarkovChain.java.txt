@@ -1,6 +1,6 @@
 package markovChain;
 
-//this is my (probably terrible) attempt at just turning a string into arraylist indexes and then going through that arraylist and making a array of probabilities for each word
+
 
 import java.util.ArrayList;
 
