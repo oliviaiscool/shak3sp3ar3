@@ -19,7 +19,10 @@ public class MarkovChain {
 		String[] list = str.split(delimiters);
 		
 		for (String s: list) {
-			words.add(s);
+
+			Word wrd = new Word(s);
+			
+			words.add(wrd);
 			wordcount++;
 		}
 
