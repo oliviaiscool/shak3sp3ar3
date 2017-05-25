@@ -1,4 +1,4 @@
-package MarkovChain;
+package markovChain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,9 +6,9 @@ import java.util.HashMap;
 public class MarkovChain {
 	//public MarkovChain(){ }
 
-	HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
+	public static HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
 	static ArrayList<String> words = new ArrayList<String>(); 
-	private String str = "Hi there my name is aidan oakley and aidan oakley really likes to party and stuff.";
+	private static String str = "Hi there my name is aidan oakley and aidan oakley really likes to party and stuff.";
 	static int wordcount = 0;
 	public int[] probability = new int[wordcount];
 	
@@ -42,16 +42,19 @@ public class MarkovChain {
 			{
 				ArrayList<String> w = new ArrayList<String>();	
 				w = map.get(i);								//duplicates current list of words and adds to it
-				w.addAll(words.get(i+1));
+				w.add(words.get(i+1));
 				map.put(words.get(i), w);					//overwrites old value, adds new list
 			} else {
-				map.put(words.get(i), new ArrayList(words.get(i+1))); 			//adds new key and list
+				ArrayList<String> stuff = new ArrayList<String>();
+				stuff.add(words.get(i+1));
+				map.put(words.get(i), stuff); 			//adds new key and list
 			}
 		}
+		return map;
 	}
 
 
-	public int[] makeProbability(ArrayList<String> words){
+	/*public int[] makeProbability(ArrayList<String> words){
 		ArrayList<Integer> index = new ArrayList<Integer>();
 		ArrayList<String> str = new ArrayList<String>();
 
@@ -68,5 +71,6 @@ public class MarkovChain {
 			createMap(words);								//adds words to map, including probablitity
 
 		}
-	}
+	}*/
 }
+ 
