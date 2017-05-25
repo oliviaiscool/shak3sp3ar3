@@ -1,27 +1,30 @@
 package MarkovChain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MarkovChain {
 	//public MarkovChain(){ }
 
-	HashMap<Word, List<Word>> map = new HashMap<Word, List<Word>>;
+	HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
 	static ArrayList<String> words = new ArrayList<String>(); 
-	private String string = "Hi there my name is aidan oakley and i really like to party and stuff.";
+	private String str = "Hi there my name is aidan oakley and aidan oakley really likes to party and stuff.";
 	static int wordcount = 0;
 	public int[] probability = new int[wordcount];
 	
-	/*
-	 * @aidan
-	 *
-	 */
-	public ArrayList<String> createList(String str) {
+	public static void main(String[] args) {
+		ArrayList text = createList(str);
+
+		createMap(text);
+	}
+
+	public static ArrayList<String> createList(String str) {
 		String delimiters = "[\\W]+";
 		String[] list = str.split(delimiters);
 		
 		for (String s: list) {
 
-			Word wrd = new Word(s);
+			String wrd = s;
 			
 			words.add(wrd);
 			wordcount++;
@@ -31,23 +34,23 @@ public class MarkovChain {
 		return words; 
 	}
 
-	/*
-	 * @ciara
-	 *
-	 */
-	public void createMap(ArrayList<String> words){
-
-		for(int i = 0; i < words.size()-1; i++){			//checks all but last word
-			if(map.containsKey(words.get(i))){	
-				List<Word> w = new List<Word>;	
+	public static HashMap createMap(ArrayList<String> words)
+	{
+		//checks all but last word
+		for(int i = 0; i < words.size()-1; i++){
+			if(map.containsKey( words.get(i) ))
+			{
+				ArrayList<String> w = new ArrayList<String>();	
 				w = map.get(i);								//duplicates current list of words and adds to it
-				w.add(words.get(i+1));
+				w.addAll(words.get(i+1));
 				map.put(words.get(i), w);					//overwrites old value, adds new list
 			} else {
-				map.put(words.get(i), new List(words.get(i+1))); 			//adds new key and list
+				map.put(words.get(i), new ArrayList(words.get(i+1))); 			//adds new key and list
 			}
 		}
 	}
+
+
 	public int[] makeProbability(ArrayList<String> words){
 		ArrayList<Integer> index = new ArrayList<Integer>();
 		ArrayList<String> str = new ArrayList<String>();
