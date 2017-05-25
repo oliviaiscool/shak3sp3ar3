@@ -42,7 +42,7 @@ public class MarkovChain {
 			map.get(i).add("");
 		}
 	}
-	public int[] makeProbability(ArrayList<String> words){
+	public int[] makeProbability(ArrayList<String> words){		//git says this is deleted?
 		ArrayList<Integer> index = new ArrayList<Integer>();
 		ArrayList<String> str = new ArrayList<String>();
 
