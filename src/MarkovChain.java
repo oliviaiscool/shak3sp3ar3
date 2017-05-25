@@ -1,4 +1,4 @@
-package markovChain;
+package MarkovChain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,18 +7,20 @@ public class MarkovChain {
 	//public MarkovChain(){ }
 
 	public static HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
-	static ArrayList<String> words = new ArrayList<String>(); 
 	private static String str = "Hi there my name is aidan oakley and aidan oakley really likes to party and stuff.";
 	static int wordcount = 0;
 	public int[] probability = new int[wordcount];
 	
 	public static void main(String[] args) {
-		ArrayList text = createList(str);
+		ArrayList<String> text = createList(str);
 
-		createMap(text);
+		HashMap<String, ArrayList<String>> textMap = createMap(text);
+		System.out.println(textMap);
+		
 	}
 
 	public static ArrayList<String> createList(String str) {
+		ArrayList<String> words = new ArrayList<String>(); 
 		String delimiters = "[\\W]+";
 		String[] list = str.split(delimiters);
 		
@@ -30,24 +32,25 @@ public class MarkovChain {
 			wordcount++;
 		}
 
-		System.out.println(wordcount);
+		System.out.println(words.size());
 		return words; 
 	}
 
-	public static HashMap createMap(ArrayList<String> words)
+	public static HashMap<String, ArrayList<String>> createMap(ArrayList<String> words)
 	{
 		//checks all but last word
-		for(int i = 0; i < words.size()-1; i++){
-			if(map.containsKey( words.get(i) ))
+		for(int s = 0; s < words.size()-1; s++){
+			if(map.containsKey( words.get(s) )) 
 			{
 				ArrayList<String> w = new ArrayList<String>();	
-				w = map.get(i);								//duplicates current list of words and adds to it
-				w.add(words.get(i+1));
-				map.put(words.get(i), w);					//overwrites old value, adds new list
+				//w = map.get(s);								//duplicates current list of words and adds to it
+				w.add(words.get(s+1));
+				
+				map.put(words.get(s), w);					//overwrites old value, adds new list
 			} else {
 				ArrayList<String> stuff = new ArrayList<String>();
-				stuff.add(words.get(i+1));
-				map.put(words.get(i), stuff); 			//adds new key and list
+				stuff.add(words.get(s+1));
+				map.put(words.get(s), stuff); 			//adds new key and list
 			}
 		}
 		return map;
