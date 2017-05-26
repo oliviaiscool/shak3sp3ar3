@@ -2,80 +2,161 @@ package markovChain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.Random;
 
 public class MarkovChain {
+	//public MarkovChain(){ }
 	public static HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
-	static String strr = "What the fuck did you just fucking say about me, you little bitch? I’ll have you know I graduated top of my class in the Navy Seals, and I’ve been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I’m the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You’re fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that’s just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little “clever” comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn’t, you didn’t, and now you’re paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You’re fucking dead, kiddo.";
+	static String strr = "That thou hast her it "
+			+ "is not all my grief, And yet it may be said I "
+			+ "loved her dearly, That she hath thee"
+			+ " is of my wailing chief, A loss"
+			+ " in love that touches me more nearly. "
+			+ "Loving offenders thus I will excuse ye,"
+			+ " Thou dost love her, because thou know'st I "
+			+ "love her, And for my sake even so doth she abuse me,"
+			+ " Suff'ring my friend for my sake to approve her."
+			+ " If I lose thee, my loss is my love's gain, And"
+			+ " losing her, my friend hath found that loss, Both"
+			+ " find each other, and I lose both twain,And both"
+			+ " for my sake lay on me this cross, But here's the"
+			+ " joy, my friend and I are one, Sweet flattery,"
+			+ " then she loves but me alone. Was it the proud full "
+			+ "sail of his great verse, Bound for the "
+			+ "prize of (all too precious) you, That "
+			+ "did my ripe thoughts in my brain inhearse, "
+			+ "Making their tomb the womb wherein they "
+			+ "grew? Was it his spirit, by spirits taught "
+			+ "to write, Above a mortal pitch, that struck"
+			+ " me dead? No, neither he, nor his compeers"
+			+ " by night Giving him aid, my verse "
+			+ "astonished. He nor that affable familiar"
+			+ " ghost Which nightly gulls him with "
+			+ "intelligence, As victors of my silence "
+			+ "cannot boast, I was not sick of any fear"
+			+ " from thence. But when your countenance "
+			+ "filled up his line, Then lacked I matter, "
+			+ "that enfeebled mine. Whilst I alone did call upon thy aid, "
+			+ "My verse alone had all thy gentle grace,But now my gracious"
+			+ " numbers are decayed, And my sick muse doth give an other place."
+			+ "I grant (sweet love) thy lovely argument Deserves the travail of a "
+			+ "worthier pen, Yet what of thee thy poet doth invent, He robs thee of, "
+			+ "and pays it thee again, He lends thee virtue, and he stole that word, "
+			+ "From thy behaviour, beauty doth he give And found it in thy "
+			+ "cheek: he can afford No praise to thee, but what in thee doth "
+			+ "live. Then thank him not for that which he say, Since what he owes "
+			+ "thee, thou thy self dost pay. Poor soul the centre of my sinful earth, My sinful earth these rebel powers array,Why dost thou pine within and suffer dearth Painting thy outward walls so costly gay? Why so large cost "
+			+ "having so short a lease, Dost thou upon thy fading mansion spend?"
+			+ " Shall worms inheritors of this excess Eat up thy charge? is this"
+			+ " thy body's end? Then soul live thou upon thy servant's loss, And "
+			+ "let that pine to aggravate thy store; Buy terms divine in selling"
+			+ " hours of dross; within be fed, without be rich no more, So "
+			+ "shall thou feed on death, that feeds on men, And death once "
+			+ "dead, there's no more dying then. Love is too young to know what conscience is, Yet who knows not "
+			+ "conscience is born of love? Then gentle "
+			+ "cheater urge not my amiss, Lest guilty of my faults thy "
+			+ "sweet self prove. For thou betraying me, I do betray My nobler "
+			+ "part to my gross body's treason, My soul doth tell my body that"
+			+ " he may, Triumph in love, flesh stays no farther reason, But rising "
+			+ "at thy name doth point out thee, As his triumphant prize, proud of this "
+			+ "pride, He is contented thy poor drudge to be, To stand in thy affairs, fall "
+			+ "by thy side. No want of conscience hold it that I call, Her love, for whose"
+			+ " dear love I rise and fall.";
+	
+	static String song = "I am hot "
+			+ "You are blank "
+			+ "You blank around "
+			+ "Like you blank "
+			+ "Who I blank "
+			+ "But you don't "
+			+ "You have got me on "
+			+ "My blank " 
+
+			+ "I am blank into the blank "
+			+ "And I am trying to keep from blank "
+			+ "Baby you blank the blank hotter "
+			+ "Cause I'm burnin' up, burnin' up "
+			+ "For you baby "
+
+			+ "Come on girl "
+
+			+ "I blank " 
+			+ "So blank "
+			+ "Cannot hold myself back " 
+			+ "High blank "
+			+ "Red blank "
+			+ "All by yourself "
+			+ "blank catch my breath "
+
+			+ "I am blank into the blank "
+			+ "And I am trying to keep from blank "
+			+ "Baby you blank the blank hotter "
+			+ "Cause Im burnin' up, burnin' up "
+			+ "For you baby "
+
+			+ "Walk in the blank "
+			+ "All I can blank is you "
+
+			+ "Oh "
+
+			+ "blank me down "
+			+ "I know you blank it too "
+
+			+ "I am blank into the blank "
+			+ "And Im trying to keep from blank "
+			+ "Baby you blank the blank hotter "
+			+ "Cause Im burnin' up, burnin' up "
+			+ "For you baby  "
+
+			+ "I am blank into the blank "
+			+ "And Im trying to keep from blank "
+			+ "Baby you blank the blank hotter "
+			+ "Cause Im burnin' up, burnin' up "
+			+ "For you baby "
+
+			+ "Burnin' up in the place tonight "
+			+ "And the blank singing blank " 
+			+ "Get blank and blank " 
+			+ "Big blank for blank "
+			+ "Stop, drop and roll " 
+			+ "More and more "
+			+ "I got blank with blank " 
+			+ "Come on boys blank the blank around "
+
+			+ "I am blank into the blank "
+			+ "And Im trying to keep from blank "
+			+ "Baby you blank the blank hotter "
+			+ "Cause Im burnin' up, burnin' up "
+			+ "For you baby "; 
+
 	static String str = strr.replaceAll("’", "");
-	static ArrayList<String> lines = new ArrayList<String>();
 	static int wordcount = 0;
 	public int[] probability = new int[wordcount];
-	
+
 	public static void main(String[] args) {
-		ArrayList<String> linTemp = readFile();
-		for(String s : linTemp){
-			lines.add(s.replaceAll("'", ""));
-		}
-		lines.add(str);
-		ArrayList<String> text = createList(lines);
+		ArrayList<String> text = createList(str);
 
 		HashMap<String, ArrayList<String>> textMap = createMap(text);
-		System.out.println(textMap);
-		
-		String thing = "Hi there my name is Aidan and my name is";
-		
-		System.out.println(thing + " " + predict(thing));
-	}
-	
-	public static ArrayList<String> readFile(){
-		String line = null; 
-		ArrayList<String> list = new ArrayList<String>();
-		
-		try {
-            FileReader fileReader = 
-                new FileReader("sonnets.txt");
+		//System.out.println(textMap);
+		//compare(strr, "thou");
+		System.out.println(remake(song, strr)); 
 
-            BufferedReader bufferedReader = 
-                new BufferedReader(fileReader);
 
-			while((line = bufferedReader.readLine()) != null) {
-                list.add(line);
-            }   
-            bufferedReader.close();         
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                "Uh oh! Something went wrong :( file 'sonnets.txt' won't open.");                
-        }
-        catch(IOException ex) {
-            System.out.println(
-                "Uh oh! Something went wrong :( file 'sonnets.txt' won't open.");
-        }
-		
-		return list;
 	}
 
-	public static ArrayList<String> createList(ArrayList<String> str) {
+	public static ArrayList<String> createList(String str) {
 		ArrayList<String> words = new ArrayList<String>(); 
 		String delimiters = "[\\W]+";
-		for(String s : str){
-			String[] list = s.split(delimiters);
-			
-			for (String st: list) {
+		String[] list = str.split(delimiters);
 
-				String wrd = st;
-				
-				words.add(wrd);
-				wordcount++;
-			}
+		for (String s: list) {
+
+			String wrd = s;
+
+			words.add(wrd);
+			wordcount++;
 		}
+
 		System.out.println(words.size());
 		return words; 
 	}
@@ -87,19 +168,59 @@ public class MarkovChain {
 			if(map.containsKey( words.get(s) )) 
 			{
 				ArrayList<String> w = new ArrayList<String>();	
-				w = map.get(words.get(s));								//duplicates current list of words and adds to it
-				w.add(words.get(s+1)); 
+				w = map.get(words.get(s));							//duplicates current list of words and adds to it
+				//System.out.println(words.get(s)); 
+				w.add(words.get(s+1));						//there is something wrong with this line and we have no idead what it is 
 				map.put(words.get(s), w);					//overwrites old value, adds new list
 			} else {
 				ArrayList<String> stuff = new ArrayList<String>();
 				stuff.add(words.get(s+1));
 				map.put(words.get(s), stuff); 			//adds new key and list
 			}
+
 		}
 		return map;
 	}
 
-	public static String predict(String str1){
+	public static String compare(String words, String str)
+	{
+		ArrayList<String> text = createList(words);
+		createMap(text);
+		Random r = new Random(); 
+		String returnstring = "";
+		for(String s: map.keySet())
+		{
+			if(s.equals(str))
+			{
+				ArrayList<String> w = map.get(s);
+				returnstring = w.get(r.nextInt(w.size()));
+			}
+		}
+		System.out.println(returnstring);
+		return returnstring; 
+	}
+	public static String remake(String song, String sonnets)
+	{
+		String returnstring = "";
+		ArrayList<String> lyrics = createList(song);
+		for(int i = 0; i< lyrics.size(); i++)
+		{
+			
+			if(lyrics.get(i).equals("blank") || lyrics.get(i).equals("blank "))
+			{
+				returnstring = returnstring + " " + compare(sonnets, lyrics.get(i-1));
+				
+			}
+			if(!lyrics.get(i).equals("blank"))
+			{
+				returnstring = returnstring + " " + lyrics.get(i);
+			}
+			
+		}
+		return returnstring; 
+	}
+
+	/*public static String predict(String str1){
 		String delimiters = "[\\W]+";
 		String[] st = str1.split(delimiters);
 		int max = 0;
@@ -120,9 +241,12 @@ public class MarkovChain {
 					prob = temps.get(j);
 				}
 			}
+
 			return prob;
 		} else {
 			return "Error 404, String Not Found";
 		}
-	}
+	}*/
+
 }
+
