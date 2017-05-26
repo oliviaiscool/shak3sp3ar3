@@ -1,4 +1,4 @@
-package edu.exeter.cs;
+package markovChain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
