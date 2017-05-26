@@ -29,7 +29,7 @@ public class MarkovChain {
 		HashMap<String, ArrayList<String>> textMap = createMap(text);
 		System.out.println(textMap);
 		
-		String thing = "Hi there my name is Aidan and my name is fuck";
+		String thing = "Hi there my name is Aidan and my name is";
 		
 		System.out.println(thing + " " + predict(thing));
 	}
