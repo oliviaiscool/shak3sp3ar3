@@ -1,13 +1,12 @@
-package markovChain;
+package MarkovChain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 public class MarkovChain {
-	//public MarkovChain(){ }
 	public static HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
-	static String strr = "That thou hast her it "
+	static String strr = "That thou hast her it "							//teaching sonnets
 			+ "is not all my grief, And yet it may be said I "
 			+ "loved her dearly, That she hath thee"
 			+ " is of my wailing chief, A loss"
@@ -63,7 +62,7 @@ public class MarkovChain {
 			+ "by thy side. No want of conscience hold it that I call, Her love, for whose"
 			+ " dear love I rise and fall.";
 	
-	static String song = "I am hot "
+	static String song = "I am hot "						//song to figure out
 			+ "You are blank "
 			+ "You blank around "
 			+ "Like you blank "
@@ -72,7 +71,7 @@ public class MarkovChain {
 			+ "You have got me on "
 			+ "My blank " 
 
-			+ "I am blank into the blank "
+			+ "I blank slipping into the blank "
 			+ "And I am trying to keep from blank "
 			+ "Baby you blank the blank hotter "
 			+ "Cause I'm burnin' up, burnin' up "
@@ -83,12 +82,12 @@ public class MarkovChain {
 			+ "I blank " 
 			+ "So blank "
 			+ "Cannot hold myself back " 
-			+ "High blank "
-			+ "Red blank "
-			+ "All by yourself "
-			+ "blank catch my breath "
+			+ "High heels "
+			+ "Red dress "
+			+ "All by blank "
+			+ "Gotta catch my breath "
 
-			+ "I am blank into the blank "
+			+ "I blank slipping into the blank "
 			+ "And I am trying to keep from blank "
 			+ "Baby you blank the blank hotter "
 			+ "Cause Im burnin' up, burnin' up "
@@ -99,96 +98,89 @@ public class MarkovChain {
 
 			+ "Oh "
 
-			+ "blank me down "
+			+ "Staring me blank "
 			+ "I know you blank it too "
 
-			+ "I am blank into the blank "
+			+ "I blank slipping into the blank "
 			+ "And Im trying to keep from blank "
 			+ "Baby you blank the blank hotter "
 			+ "Cause Im burnin' up, burnin' up "
 			+ "For you baby  "
 
-			+ "I am blank into the blank "
+			+ "I blank slipping into the blank "
 			+ "And Im trying to keep from blank "
 			+ "Baby you blank the blank hotter "
 			+ "Cause Im burnin' up, burnin' up "
 			+ "For you baby "
 
 			+ "Burnin' up in the place tonight "
-			+ "And the blank singing blank " 
-			+ "Get blank and blank " 
-			+ "Big blank for blank "
-			+ "Stop, drop and roll " 
+			+ "And the blank singing loud " 
+			+ "Get up and blank " 
+			+ "Big robs for blank "
+			+ "Stop, drop and blank " 
 			+ "More and more "
-			+ "I got blank with blank " 
-			+ "Come on boys blank the blank around "
+			+ "I got JB with blank " 
+			+ "Come on blank bring the blank around "
 
-			+ "I am blank into the blank "
+			+ "I blank slipping into the blank "
 			+ "And Im trying to keep from blank "
 			+ "Baby you blank the blank hotter "
 			+ "Cause Im burnin' up, burnin' up "
 			+ "For you baby "; 
 
-	static String str = strr.replaceAll("’", "");
+	static String str = strr.replaceAll("’", "");				//gets rid of apostrophes etc
 	static int wordcount = 0;
 	public int[] probability = new int[wordcount];
 
-	public static void main(String[] args) {
-		ArrayList<String> text = createList(str);
-
-		HashMap<String, ArrayList<String>> textMap = createMap(text);
-		//System.out.println(textMap);
-		//compare(strr, "thou");
+	public static void main(String[] args) {					//main - calls and prints the remake method
 		System.out.println(remake(song, strr)); 
-
-
 	}
 
-	public static ArrayList<String> createList(String str) {
+	public static ArrayList<String> createList(String str) {		//makes a list of words out of a string of words
 		ArrayList<String> words = new ArrayList<String>(); 
 		String delimiters = "[\\W]+";
-		String[] list = str.split(delimiters);
+		String[] list = str.split(delimiters);				//splits the large string into an array of strings
 
-		for (String s: list) {
+		for (String s: list) {								//for each string in the array add to arraylist and incriment wordcount
 
-			String wrd = s;
+			String wrd = s.toLowerCase();
 
 			words.add(wrd);
 			wordcount++;
 		}
-
 		System.out.println(words.size());
 		return words; 
 	}
 
-	public static HashMap<String, ArrayList<String>> createMap(ArrayList<String> words)
+	public static HashMap<String, ArrayList<String>> createMap(ArrayList<String> words)		//creates a map with all the words that ever follow the key as the values
 	{
-		//checks all but last word
-		for(int s = 0; s < words.size()-1; s++){
-			if(map.containsKey( words.get(s) )) 
+		String temp1, temp2;
+		for(int s = 0; s < words.size()-1; s++){			//checks all but last word
+			temp1 = (words.get(s)).toLowerCase();
+			temp2 = (words.get(s+1)).toLowerCase();
+			if(map.containsKey(temp1)) 						//if the word already exists
 			{
 				ArrayList<String> w = new ArrayList<String>();	
-				w = map.get(words.get(s));							//duplicates current list of words and adds to it
-				//System.out.println(words.get(s)); 
-				w.add(words.get(s+1));						//there is something wrong with this line and we have no idead what it is 
-				map.put(words.get(s), w);					//overwrites old value, adds new list
+				w = map.get(temp1);							//duplicates current list of words and adds to it
+				w.add(temp2);						
+				map.put(temp1, w);					//overwrites old value, adds new list
 			} else {
 				ArrayList<String> stuff = new ArrayList<String>();
-				stuff.add(words.get(s+1));
-				map.put(words.get(s), stuff); 			//adds new key and list
+				stuff.add(temp2);
+				map.put(temp1, stuff); 			//adds new key and list
 			}
-
 		}
 		return map;
 	}
 
-	public static String compare(String words, String str)
+	public static String compare(String words, String str)		//tries to predict a word
 	{
-		ArrayList<String> text = createList(words);
-		createMap(text);
+		str = str.toLowerCase();
+		ArrayList<String> text = createList(words);			//calls createlist to make a list of strings
+		createMap(text);									//calls createmap on the list
 		Random r = new Random(); 
 		String returnstring = "";
-		for(String s: map.keySet())
+		for(String s: map.keySet())							//randomly chooses a word in the list of words that follow the chosen word
 		{
 			if(s.equals(str))
 			{
@@ -199,16 +191,17 @@ public class MarkovChain {
 		System.out.println(returnstring);
 		return returnstring; 
 	}
-	public static String remake(String song, String sonnets)
+	
+	public static String remake(String song, String sonnets)			//remake method - returns altered song
 	{
+		song = song.toLowerCase();										//makes sure it's lower case
 		String returnstring = "";
-		ArrayList<String> lyrics = createList(song);
+		ArrayList<String> lyrics = createList(song);					//calls create list to make a list of the words in the song
 		for(int i = 0; i< lyrics.size(); i++)
 		{
-			
-			if(lyrics.get(i).equals("blank") || lyrics.get(i).equals("blank "))
+			if(lyrics.get(i).equals("blank") || lyrics.get(i).equals("blank "))			//for each word, checks if it is "blank" and if it is, tries to guess a word
 			{
-				returnstring = returnstring + " " + compare(sonnets, lyrics.get(i-1));
+				returnstring = returnstring + " " + compare(sonnets, lyrics.get(i-1));		//calls compare to predict a word
 				
 			}
 			if(!lyrics.get(i).equals("blank"))
@@ -219,34 +212,5 @@ public class MarkovChain {
 		}
 		return returnstring; 
 	}
-
-	/*public static String predict(String str1){
-		String delimiters = "[\\W]+";
-		String[] st = str1.split(delimiters);
-		int max = 0;
-		String prob = "";
-		if(map.containsKey(st[st.length-1])){
-			ArrayList<String> temps = map.get(st[st.length-1]);
-			HashMap<String, Integer> m = new HashMap<String, Integer>();
-			for(String temp : temps){
-				if(m.containsKey(temp)){
-					m.put(temp, m.get(temp)+1);
-				} else {
-					m.put(temp, 1);
-				}
-			}
-			for(int j = 0; j < temps.size(); j++){
-				if(max < m.get(temps.get(j))){
-					max = m.get(temps.get(j));
-					prob = temps.get(j);
-				}
-			}
-
-			return prob;
-		} else {
-			return "Error 404, String Not Found";
-		}
-	}*/
-
 }
 
